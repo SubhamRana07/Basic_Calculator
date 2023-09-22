@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 108px;
+    padding: 0;
+  }
+  .calculator {
+    max-width: 310px;
+    margin: 0 auto;
+    padding: 29px;
+    border: 2px solid #adadad;
+    border-radius: 57px;
+    box-shadow : rgba(255, 111, 224, 0.863)16px 49px 133px 12px;
+    background: linear-gradient(333deg, #ff88ea, #abf0ff);
+ }
+  input[type="text"] {
+    width: 85%;
+    padding: 9px;
+    margin-bottom: 10px;
+    font-size: 21px;
+    background:#cbd5d7;
+    /*background: linear-gradient(117deg, #ed769f,#f5a185, #ffc678);*/
+    border-radius: 45px;
+  }
+  button {
+    width: 50px;
+    height: 50px;
+    font-size: 21px;
+    margin: 12px;
+    border: 1px solid #050505;;
+    border-radius: 50%;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div class="calculator">
+  <input type="text" id="result" readonly>
+  <table>
+    <tr>
+      <td><button onclick="appendToResult('7')">7</button></td>
+      <td><button onclick="appendToResult('8')">8</button></td>
+      <td><button onclick="appendToResult('9')">9</button></td>
+      <td><button onclick="appendToResult('+')">+</button></td>
+    </tr>
+    <tr>
+      <td><button onclick="appendToResult('4')">4</button></td>
+      <td><button onclick="appendToResult('5')">5</button></td>
+      <td><button onclick="appendToResult('6')">6</button></td>
+      <td><button onclick="appendToResult('-')">-</button></td>
+    </tr>
+    <tr>
+      <td><button onclick="appendToResult('1')">1</button></td>
+      <td><button onclick="appendToResult('2')">2</button></td>
+      <td><button onclick="appendToResult('3')">3</button></td>
+      <td><button onclick="appendToResult('*')">*</button></td>
+    </tr>
+    <tr>
+      <td><button onclick="appendToResult('0')">0</button></td>
+      <td><button onclick="clearResult()">C</button></td>
+      <td><button onclick="calculateResult()">=</button></td>
+      <td><button onclick="appendToResult('/')">/</button></td>
+    </tr>
+  </table>
+</div>
+<script>
+  function appendToResult(value) {
+    document.getElementById('result').value += value;
+  }
+
+  function clearResult() {
+    document.getElementById('result').value = '';
+  }
+
+  function calculateResult() {
+    const resultInput = document.getElementById('result');
+    try {
+      resultInput.value = eval(resultInput.value);
+    } catch (error) {
+      resultInput.value = 'Error';
+    }
+  }
+</script>
+</body>
+</html>
